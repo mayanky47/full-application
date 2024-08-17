@@ -4,7 +4,8 @@ package project.navigator;
 import org.apache.maven.model.Model;
 import project.navigator.resources.ProjectStructure;
 
-import static file.navigator.service.ProjectService.getProjectMavenModel;
+
+import static project.navigator.service.ProjectService.getProjectMavenModel;
 import static project.navigator.utility.ProjectBuilder.buildProject;
 
 

@@ -2,6 +2,7 @@ package file.navigator.services;
 
 
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.stmt.BlockStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
@@ -10,10 +11,21 @@ import file.navigator.resources.FileResource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
+
+import static file.navigator.services.MethodCreation.createMethod;
 
 public class ClassCreation {
 
+    public static void addMethodToTheClassFile(FileResource fileResource, MethodDeclaration methodDeclaration) {
+        Optional<ClassOrInterfaceDeclaration> f = fileResource.getCu().getClassByName(fileResource.getName().toString());
+        if (f.isPresent()){
+            f.get().addMember(methodDeclaration);
+            createClass(fileResource.getCu(),fileResource.getFile());
+        }
+    }
     public static void createClass(CompilationUnit compilationUnit, File file) {
+        System.out.println(file.getAbsolutePath());
         VoidVisitorAdapter<Void> methodVisitor = new VoidVisitorAdapter<>() {
             @Override
             public void visit(MethodDeclaration methodDeclaration, Void arg) {

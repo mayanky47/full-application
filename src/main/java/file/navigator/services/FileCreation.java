@@ -3,14 +3,16 @@ package file.navigator.services;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.PackageDeclaration;
 import com.github.javaparser.ast.expr.Name;
-import com.project.navigator.resources.ProjectStructure;
+import project.navigator.resources.ProjectStructure;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import static com.file.navigator.services.ClassCreation.createClass;
-import static com.file.navigator.utility.PackageHelper.packageBuilder;
+import static file.navigator.services.ClassCreation.createClass;
+import static file.navigator.utility.PackageHelper.packageBuilder;
+
 
 public class FileCreation {
 

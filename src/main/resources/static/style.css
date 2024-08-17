@@ -1,0 +1,15 @@
+.root {
+    -fx-background-image: url("ram.jpg");
+    -fx-background-size: cover;
+}
+/*.projectNameLabel {*/
+/*    -fx-font-size: 24px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #2c3e50; !* Dark blue color *!*/
+/*    -fx-padding: 10px 20px; !* Optional padding *!*/
+/*    -fx-background-color: #ecf0f1; !* Light gray background color *!*/
+/*    -fx-border-color: #bdc3c7; !* Optional border color *!*/
+/*    -fx-border-width: 2px; !* Optional border width *!*/
+/*    -fx-border-radius: 5px; !* Optional rounded corners *!*/
+/*    -fx-background-radius: 5px; !* Optional rounded background corners *!*/
+/*}*/

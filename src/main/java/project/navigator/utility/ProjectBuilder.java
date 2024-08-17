@@ -4,10 +4,15 @@ package project.navigator.utility;
 import org.apache.maven.model.Model;
 import project.navigator.resources.ProjectStructure;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static project.navigator.service.ProjectService.createPackage;
 import static project.navigator.service.ProjectService.traverseDirectory;
@@ -31,6 +36,21 @@ public class ProjectBuilder {
         if (controllerClasses == null){
             controllerClasses = new ArrayList<>();
         }
-        return new ProjectStructure(name, projectPath,controllerClasses,groupId, artifactId,javaClassPath);
+
+        List<Path> packages = packageFinder(javaClassPath);
+        if (packages == null){
+            packages = new ArrayList<>();
+        }
+        return new ProjectStructure(name, projectPath,controllerClasses,packages,groupId, artifactId,javaClassPath);
+    }
+
+    public static List<Path> packageFinder(Path path){
+        try {
+            List<String> directories = List.of(path.toFile().list((current, name) -> new File(current, name).isDirectory()));
+            List<Path> files = directories.stream().map(Paths::get).collect(Collectors.toList());
+            return files;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

@@ -62,15 +62,26 @@
 			<artifactId>javaparser-core</artifactId>
 			<version>3.25.4</version>
 		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
 
-	</dependencies><build>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>6.1.8</version>
+		</dependency>
+    </dependencies><build>
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
 			<configuration>
-				<source>9</source>
-				<target>9</target>
+				<source>16</source>
+				<target>16</target><compilerArgs>--enable-preview</compilerArgs>
 			</configuration>
 		</plugin>
 	</plugins>
